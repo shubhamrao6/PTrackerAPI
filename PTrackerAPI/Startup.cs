@@ -28,9 +28,11 @@ namespace PTrackerAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddCors(options => options.AddPolicy("CorsPolicy", x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()));
             services.AddScoped<DbContext>();
             services.AddScoped<IPortfolioRepository, PortfolioRepository>();
             services.AddScoped<IStockRepository, StockRepository>();
+            services.AddCors(options => options.AddPolicy("CorsPolicy", x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,6 +42,8 @@ namespace PTrackerAPI
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors("CorsPolicy");
 
             app.UseHttpsRedirection();
 

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="MongoDb" id="Project_171b" database="MongoDb" >
+	<schema name="Stonk" >
+		<table name="Portfolio" >
+			<column name="Id" type="int" jt="4" />
+			<column name="Name" type="string" jt="12" />
+			<column name="Description" type="string" jt="12" />
+		</table>
+		<table name="Stock" >
+			<column name="Id" type="int" jt="4" />
+			<column name="Symbol" type="string" jt="12" />
+			<column name="Price" type="double" jt="8" />
+			<column name="Quantity" type="int" jt="4" />
+			<column name="PortfolioId" type="int" jt="4" />
+			<fk name="Fk_Stock_Portfolio" virtual="y" to_schema="Stonk" to_table="Portfolio" >
+				<fk_column name="PortfolioId" pk="Id" />
+			</fk>
+		</table>
+	</schema>
+	<connector name="MongoDb" database="MongoDb" driver_class="com.dbschema.MongoJdbcDriver" driver_jar="mongojdbc3.1.jar" driver_desc="No Authentication" host="localhost" port="27017" instance="Stonk" user="admin" />
+	<layout name="Main Layout" id="Layout_1885" show_relation="columns" >
+		<entity schema="Stonk" name="Portfolio" color="C1D8EE" x="320" y="48" />
+		<entity schema="Stonk" name="Stock" color="C1D8EE" x="48" y="48" />
+		<script name="Sample" id="Editor_dc8" language="SQL" >
+			<string><![CDATA[Stonk.Portfolio.find({});]]></string>
+		</script>
+	</layout>
+</project>

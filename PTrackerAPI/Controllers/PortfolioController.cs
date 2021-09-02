@@ -39,6 +39,12 @@ namespace PTrackerAPI.Controllers
             return Ok(repo.GetPortfolio(id));
         }
 
+        [HttpGet]
+        public IActionResult GetAllPortfolios()
+        {
+            return Ok(repo.GetPortfolios());
+        }
+
         [HttpPut("{id}")]
         public IActionResult Put(int id, Portfolio portfolio)
         {

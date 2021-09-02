@@ -29,6 +29,11 @@ namespace PTrackerAPI.Repository
             return db.Portfolios.Find(x => x.Id == id).FirstOrDefault();
         }
 
+        public List<Portfolio> GetPortfolios()
+        {
+            return db.Portfolios.Find(x => true).ToList();
+        }
+
         public void UpdatePortfolio(int id, Portfolio portfolio)
         {
             var filter = Builders<Portfolio>.Filter.Where(x => x.Id == id);
