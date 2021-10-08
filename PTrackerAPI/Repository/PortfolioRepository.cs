@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using PTrackerAPI.Models;
 using MongoDB.Driver;
+using MongoDB.Bson;
 
 namespace PTrackerAPI.Repository
 {
@@ -16,6 +17,17 @@ namespace PTrackerAPI.Repository
         }
         public void AddPortfolio(Portfolio portfolio)
         {
+            var documents = db.Portfolios.Find(new BsonDocument()).ToList();
+            var max_portfolio_id = 0;
+            foreach (Portfolio p in documents)
+            {
+                if (p.Id > max_portfolio_id)
+                {
+                    max_portfolio_id = p.Id;
+                }
+
+            }
+            portfolio.Id = max_portfolio_id + 1;
             db.Portfolios.InsertOne(portfolio);
         }
 

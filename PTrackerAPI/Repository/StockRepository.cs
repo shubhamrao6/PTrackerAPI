@@ -5,6 +5,7 @@ using PTrackerAPI.Models;
 using System.Linq;
 using System.Linq.Expressions;
 using MongoDB.Driver;
+using MongoDB.Bson;
 
 namespace PTrackerAPI.Repository
 {
@@ -17,6 +18,17 @@ namespace PTrackerAPI.Repository
         }
         public void AddStock(Stock stock)
         {
+            var documents = db.Stocks.Find(new BsonDocument()).ToList();
+            var max_stock_id = 0;
+            foreach (Stock s in documents)
+            {
+                if (s.Id > max_stock_id)
+                {
+                    max_stock_id = s.Id;
+                }
+
+            }
+            stock.Id = max_stock_id + 1;
             db.Stocks.InsertOne(stock);
         }
 
