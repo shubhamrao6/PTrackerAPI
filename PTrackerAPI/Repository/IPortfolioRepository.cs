@@ -12,7 +12,6 @@ namespace PTrackerAPI.Repository
         void AddPortfolio(Portfolio portfolio);
         void UpdatePortfolio(int id, Portfolio portfolio);
         void DeletePortfolio(int id);
-
         List<Portfolio> GetPortfolios();
     }
 }

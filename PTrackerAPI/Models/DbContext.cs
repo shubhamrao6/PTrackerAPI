@@ -17,7 +17,7 @@ namespace PTrackerAPI.Models
             client = new MongoClient(configuration.GetConnectionString("MongoConnection"));
             database = client.GetDatabase(configuration.GetSection("MongoDatabase").Value);
         }
-        public IMongoCollection<Stock> Stocks => database.GetCollection<Stock>("Stock");
-        public IMongoCollection<Portfolio> Portfolios => database.GetCollection<Portfolio>("Portfolio");
+        //public IMongoCollection<Stock> Stocks => database.GetCollection<Stock>("Stock");
+        public IMongoCollection<Portfolio> Portfolios => database.GetCollection<Portfolio>("PortfolioV2");
     }
 }
