@@ -23,7 +23,7 @@ namespace PTrackerAPI.Controllers
         public IActionResult AddPortfolio(Portfolio portfolio)
         {
             repo.AddPortfolio(portfolio);
-            return StatusCode(201, "Portfolio created successfully");
+            return Ok("Portfolio created successfully");
         }
 
         [HttpDelete("{id}")]
