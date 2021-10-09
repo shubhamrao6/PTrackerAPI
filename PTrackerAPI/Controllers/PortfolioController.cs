@@ -23,14 +23,14 @@ namespace PTrackerAPI.Controllers
         public IActionResult AddPortfolio(Portfolio portfolio)
         {
             repo.AddPortfolio(portfolio);
-            return StatusCode(201, "Portfolio created successfully");
+            return Ok("{}");
         }
 
         [HttpDelete("{id}")]
         public IActionResult DeletePortfolio(int id)
         {
             repo.DeletePortfolio(id);
-            return Ok("Portfolio deleted successfully");
+            return Ok("{}");
         }
 
         [HttpGet("{id}")]
