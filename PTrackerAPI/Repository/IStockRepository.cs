@@ -10,7 +10,7 @@ namespace PTrackerAPI.Repository
     {
         List<Stock> GetStocksByPortfolio(int pid);
         Stock GetStock(int id);
-        void AddStock(Stock stock);
+        Stock AddStock(Stock stock);
         void UpdateStock(int id, Stock stock);
         void DeleteStock(int id);
     }

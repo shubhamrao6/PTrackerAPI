@@ -16,7 +16,7 @@ namespace PTrackerAPI.Repository
         {
             db = _db;
         }
-        public void AddStock(Stock stock)
+        public Stock AddStock(Stock stock)
         {
             var documents = db.Stocks.Find(new BsonDocument()).ToList();
             var max_stock_id = 0;
@@ -30,6 +30,7 @@ namespace PTrackerAPI.Repository
             }
             stock.Id = max_stock_id + 1;
             db.Stocks.InsertOne(stock);
+            return stock;
         }
 
         public void DeleteStock(int id)

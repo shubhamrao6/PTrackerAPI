@@ -22,15 +22,15 @@ namespace PTrackerAPI.Controllers
         [HttpPost]
         public IActionResult AddStock(Stock stock)
         {
-            repo.AddStock(stock);
-            return StatusCode(201, "Stock added successfully");
+            
+            return Ok(repo.AddStock(stock));
         }
 
         [HttpDelete("{id}")]
         public IActionResult DeleteStock(int id)
         {
             repo.DeleteStock(id);
-            return Ok("Stock deleted successfully");
+            return Ok("{}");
         }
 
         [HttpGet("{id}")]
@@ -49,7 +49,7 @@ namespace PTrackerAPI.Controllers
         public IActionResult Put(int id, Stock stock)
         {
             repo.UpdateStock(id, stock);
-            return Ok("Stock updated successfully");
+            return Ok("{}");
         }
     }
 }
