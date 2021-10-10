@@ -22,8 +22,8 @@ namespace PTrackerAPI.Controllers
         [HttpPost]
         public IActionResult AddPortfolio(Portfolio portfolio)
         {
-            repo.AddPortfolio(portfolio);
-            return Ok("{}");
+            
+            return Ok(repo.AddPortfolio(portfolio));
         }
 
         [HttpDelete("{id}")]
@@ -49,7 +49,7 @@ namespace PTrackerAPI.Controllers
         public IActionResult Put(int id, Portfolio portfolio)
         {
             repo.UpdatePortfolio(id, portfolio);
-            return Ok("Profile updated successfully");
+            return Ok("{}");
         }
     }
 }

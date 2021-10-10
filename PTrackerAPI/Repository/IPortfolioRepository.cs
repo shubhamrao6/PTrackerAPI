@@ -9,7 +9,7 @@ namespace PTrackerAPI.Repository
     public interface IPortfolioRepository
     {
         Portfolio GetPortfolio(int id);
-        void AddPortfolio(Portfolio portfolio);
+        Portfolio AddPortfolio(Portfolio portfolio);
         void UpdatePortfolio(int id, Portfolio portfolio);
         void DeletePortfolio(int id);
 

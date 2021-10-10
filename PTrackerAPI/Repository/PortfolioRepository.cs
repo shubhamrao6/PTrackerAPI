@@ -15,7 +15,7 @@ namespace PTrackerAPI.Repository
         {
             db = _db;
         }
-        public void AddPortfolio(Portfolio portfolio)
+        public Portfolio AddPortfolio(Portfolio portfolio)
         {
             var documents = db.Portfolios.Find(new BsonDocument()).ToList();
             var max_portfolio_id = 0;
@@ -29,6 +29,7 @@ namespace PTrackerAPI.Repository
             }
             portfolio.Id = max_portfolio_id + 1;
             db.Portfolios.InsertOne(portfolio);
+            return portfolio;
         }
 
         public void DeletePortfolio(int id)
